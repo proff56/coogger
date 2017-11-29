@@ -54,4 +54,7 @@ urlpatterns = [
     url(r"^settings/$",settings.profile),
     url(r"^settings/account$",settings.account),
 
-] + static("/media/",document_root=os.path.join(BASE_DIR, 'media'))
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
